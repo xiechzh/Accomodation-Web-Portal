@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>List</title>
+    <script src="../static/jquery-3.3.1/jquery-3.3.1.js"></script>
+    <script src="../static/js/bootstrap.js"></script>
+    <link rel="stylesheet" href="../static/css/bootstrap.css"/>
+    <link rel="stylesheet" href="../static/css/message_box_style.css"/>
+    <script src="../static/js/list.js"></script>
+    <script src="../static/js/sign_in_sign_up.js"></script>
+    <script src="../static/js/chatbot.js"></script>
+</head>
+<body>
+
+<div id="Chatbot" style="z-index: 9999; position: fixed ! important; right: 4%; bottom: 5%;">
+    <table width=""100% style="position: absolute; width:260px; right: 5%; top: 5%;">
+        <a id="chat_bot_btn" href="#modal-container-673916" role="button" class="btn" data-toggle="modal">
+             <button type="button" class="btn btn-info" style="border-radius: 50%; height: 60px; width: 60px; opacity: 0.7">
+                 <img src="../static/icon/robot.svg" style="height: 35px">
+             </button>
+         </a>
+
+			<div class="modal fade" id="modal-container-673916" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="float: right">
+				<div class="modal-dialog "  style="width: inherit; height: inherit; position: fixed ! important; right: 10%; bottom: 10%">
+					<div class="modal-content chat-container" style="width: 490px">
+						<div class="modal-header">
+							 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+							<h4 class="modal-title" id="myModalLabel" style="color: white">
+								ChatBot
+							</h4>
+						</div>
+						<div id="scroll_div" class="modal-body" onclick="this.scrollTop+=100" style="overflow:auto; height:400px;">
+
+                                <ul id="chatbot_body_ul" class="chat">
+                                    <li class="message left">
+                                        <img class="logo" src="../static/icon/robot.svg" alt="">
+                                        <p>Hi there!</p>
+                                    </li>
+                                </ul>
+						</div>
+                        <div class="modal-footer">
+                            <input id="chat_bot_input" type="text" class="text_input" placeholder="Message..."/>
+                        </div>
+					</div>
+
+				</div>
+
+			</div>
+    </table>
+</div>
+
+<div class="modal fade" id="modal-container-555325" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" >
+    <div class="modal-dialog">
+        <div class="modal-content" style="border-radius: 20px">
+            <div class="modal-header">
+                <button id="sign_in_close" type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title" id="myModalLabel">
+                    Hi, There!
+                </h4>
+            </div>
+            <div class="modal-body">
+                <div class="row clearfix">
+                    <div class="col-md-2 column">
+                    </div>
+                    <div class="col-md-8 column" style="padding:7% 2%">
+                        <form role="form" style="padding-left: 5%; padding-right: 5%">
+                            <div class="form-group" style="width: 100%;">
+                                <label for="sign_in_account">Account Name</label><input type="text" class="form-control" id="sign_in_account" />
+                            </div>
+                            <div class="form-group" style="width: 100%;">
+                                <label for="sign_in_password">Password</label><input type="password" class="form-control" id="sign_in_password" />
+                            </div>
+                        </form>
+                        <div style="float: left">
+                            <a href="#modal-container-555326" id="in_to_up" data-toggle="modal" data-dismiss="modal">Not a member yet?</a><br>
+                        </div>
+                    </div>
+                    <div class="col-md-2 column">
+                    </div>
+                </div>
+                <div class="alert alert-dismissable alert-danger" id="sign_in_info_div" style="display: none">
+				    <button id="sign_in_info_close" type="button" class="close" aria-hidden="true">×</button>
+				    <h4 id="sign_in_info_header">
+					    Check it again!
+				    </h4> <strong>Warning!&ensp;</strong><i id="sign_in_info">Different password you have provided</i>
+			    </div>
+            </div>
+            <div class="modal-footer">
+                <button id="sign_in_cancel" type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                <button id="sign_in" type="button" class="btn btn-primary">Go!</button>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div class="modal fade" id="modal-container-555326" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content" style="border-radius: 20px">
+            <div class="modal-header">
+                <button id="sign_up_close" type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title" id="myModalLabel">
+                    Welcome!
+                </h4>
+            </div>
+            <div class="modal-body" id="sign_up_modal_body">
+                <div class="row clearfix">
+                    <div class="col-md-2 column">
+                    </div>
+                    <div class="col-md-8 column" style="padding:7% 2%">
+                        <form role="form" style="padding-left: 5%; padding-right: 5%">
+                            <div class="form-group">
+                                <label for="account">Account Name</label><input type="text" class="form-control" id="account" />
+                            </div>
+                            <div class="form-group">
+                                <label for="password_1">Password</label><input type="password" class="form-control" id="password_1" />
+                            </div>
+                            <div class="form-group">
+                                <label for="password_2">Password confirm</label><input type="password" class="form-control" id="password_2" />
+                            </div>
+                        </form>
+                        <div style="float: left">
+                            <a href="#modal-container-555325" id="up_to_in" data-toggle="modal" data-dismiss="modal">Back to sign in</a><br>
+                        </div>
+                    </div>
+                    <div class="col-md-2 column">
+                    </div>
+                </div>
+                <div class="alert alert-dismissable alert-danger" id="sign_up_info_div" style="display: none">
+				    <button id="sign_up_info_close" type="button" class="close" aria-hidden="true">×</button>
+				    <h4 id="sign_up_info_header">
+					    Check it again!
+				    </h4> <strong>Warning!&ensp;</strong><i id="sign_up_info">Different password you have provided</i>
+			    </div>
+            </div>
+            <div class="modal-footer">
+                <button id="sign_up_cancel" type="button" class="btn btn-default" data-dismiss="modal" >Cancel</button>
+                <button id="sign_up" type="button" class="btn btn-primary" >Go!</button>
+                <script>
+
+                </script>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+<div class="container">
+	<div class="row clearfix">
+		<div class="col-md-12 column">
+			<nav class="navbar navbar-default" role="navigation">
+				<div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span></button>
+                    <a class="navbar-brand" href="test.html">
+                        <img src="../static/icon/logo.svg" style="margin-top: -39px; margin-bottom: -19px; margin-left: 8px" height="70" width="70" /> Go World!</a>
+				</div>
+
+				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+					<ul class="nav navbar-nav">
+						<li class="active">
+							 <a href="#">Back</a>
+						</li>
+						<li>
+							 <a href="#">Link</a>
+						</li>
+						<li class="dropdown">
+							 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown<strong class="caret"></strong></a>
+							<ul class="dropdown-menu">
+								<li>
+									 <a href="#">Action</a>
+								</li>
+								<li>
+									 <a href="#">Another action</a>
+								</li>
+								<li>
+									 <a href="#">Something else here</a>
+								</li>
+								<li class="divider">
+								</li>
+								<li>
+									 <a href="#">Separated link</a>
+								</li>
+								<li class="divider">
+								</li>
+								<li>
+									 <a href="#">One more separated link</a>
+								</li>
+							</ul>
+						</li>
+					</ul>
+					<form class="navbar-form navbar-left" role="search">
+						<div class="form-group">
+							<input type="text" class="form-control" />
+						</div> <button type="submit" class="btn btn-default">Search</button>
+					</form>
+					<ul id="nav_sign_in_ul" class="nav navbar-nav navbar-right" style="margin-right: 1%;">
+                        <li><a href="#modal-container-555326" id="nav_sign_up" data-toggle="modal"><span class="glyphicon glyphicon-user"></span> Sign up</a></li>
+                        <li><a href="#modal-container-555325" id="nav_sign_in" data-toggle="modal"><span class="glyphicon glyphicon-log-in"></span> Sign in</a></li>
+                    </ul>
+					<ul id="nav_name" class="nav navbar-nav navbar-right" style="margin-right: 1%; display: none">
+						<li style="margin-top: 2%">
+							 <img alt="40x40" src="../static/Unknown.png" class="img-circle" height="40" width="40" />
+						</li>
+						<li class="dropdown">
+							 <a id="customer_name" href="#" class="dropdown-toggle" data-toggle="dropdown">Jianyu Yi<strong class="caret"></strong></a>
+							<ul class="dropdown-menu">
+								<li>
+									 <a href="Personalinfo.html">Personal Center</a>
+								</li>
+								<li>
+									 <a href="#">Share your room!</a>
+								</li>
+								<li class="divider">
+								</li>
+								<li>
+									 <a id="sign_out" href="#">Sign out</a>
+								</li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+
+			</nav>
+            <div class="row clearfix">
+                <div class="col-md-1 column">
+				</div>
+                <div class="col-md-10 column">
+                    <div class="btn-group btn-group-xs">
+				        <button id="distance_rank" class="btn btn-default" type="button"><img src="../static/icon/distance.svg" width="15px" style="margin-top: -2px"/> Distance&ensp;<img id="distance_rank_icon" src="../static/icon/line.svg" width="15px"/></button>
+                        <button id="price_rank" class="btn btn-default" type="button"><img src="../static/icon/price.svg" width="15px" style="margin-top: -2px"/> Price&ensp;<img id="price_rank_icon" src="../static/icon/line.svg" width="15px"/></button>
+                        <button id="star_rank" class="btn btn-default" type="button"><img src="../static/icon/star_fill.svg" width="15px" style="margin-top: -2px"/> Star&ensp;<img id="star_rank_icon" src="../static/icon/line.svg" width="15px"/></button>
+			        </div>
+				</div>
+                <div class="col-md-1 column">
+				</div>
+            </div>
+			<div class="row clearfix" style="margin-top: 1%">
+				<div class="col-md-1 column">
+				</div>
+				<div class="col-md-6 column" style="overflow:scroll; height:1400px;">
+                    <div id="property_list_div">
+                    </div>
+
+				</div>
+                <div class="col-md-4 column">
+                    <div class="row clearfix">
+                        <div class="col-md-12 column" id="map" style=" height: 280px;">
+                        </div>
+                        <script type="text/javascript">
+
+                        </script>
+                    </div>
+
+                    <div class="row clearfix">
+                        <div class="col-md-12 column" style="margin-top: 6%">
+                            <div id="myCarousel" class="carousel slide">
+                                <!-- 轮播（Carousel）指标 -->
+                                <ol class="carousel-indicators" id="images_position_list">
+                                    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                                    <li data-target="#myCarousel" data-slide-to="1"></li>
+                                </ol>
+                                <!-- 轮播（Carousel）项目 -->
+                                <div class="carousel-inner" id="images_list">
+                                    <div class="item active">
+                                        <a href="https://www.yelp.com.au/events/sydney-yelps-80s-yelper-party?adjust_creative=6LtncbEyQv8a4tD_BvHXmQ&utm_campaign=yelp_api_v3&utm_medium=api_v3_event_search&utm_source=6LtncbEyQv8a4tD_BvHXmQ">
+                                            <img src="https://s3-media2.fl.yelpcdn.com/ephoto/DVmdGR4Q_-YW2dC2wAnDAg/o.jpg" href="" alt="First slide" style="height: 400px; width: 100%">
+                                        </a>
+                                    </div>
+                                    <div class="item">
+                                        <a href="https://www.yelp.com.au/events/bondi-beach-ticket-giveaway-3-x-double-passes-to-bondi-openair-cinema?adjust_creative=6LtncbEyQv8a4tD_BvHXmQ&utm_campaign=yelp_api_v3&utm_medium=api_v3_event_search&utm_source=6LtncbEyQv8a4tD_BvHXmQ">
+                                            <img src="https://s3-media3.fl.yelpcdn.com/ephoto/Dnbdn_T8WhBsRD4whuiJgA/o.jpg" alt="Second slide" style="height: 400px; width: 100%">
+                                        </a>
+                                    </div>
+                                </div>
+                                <!-- 轮播（Carousel）导航 -->
+                                <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+                                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span>
+                                </a>
+                                <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+                                    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                                    <span class="sr-only">Next</span>
+                            </a>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div style="margin-top: 2%">
+
+                    </div>
+
+				</div>
+				<div class="col-md-1 column">
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</body>
+</html>

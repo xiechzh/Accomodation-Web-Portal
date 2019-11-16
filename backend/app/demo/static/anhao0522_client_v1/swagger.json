@@ -1,0 +1,1545 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "v1",
+    "title": "AccommodationInfo"
+  },
+  "basePath": "/anhao0522/client/v1",
+  "tags": [
+    {
+      "name": "accommodation",
+      "description": "Everything about house"
+    },
+    {
+      "name": "account",
+      "description": "sign up or login customer's account"
+    },
+    {
+      "name": "landlord",
+      "description": "Operations about landlord"
+    },
+    {
+      "name": "user",
+      "description": "Operations about user"
+    }
+  ],
+  "paths": {
+    "/accommodation/all": {
+      "get": {
+        "tags": [
+          "accommodation"
+        ],
+        "summary": "get the result for specific searching information",
+        "operationId": "getAccommodationInfo",
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "name": "location",
+            "in": "query",
+            "description": "the destination you want to go i.e. Sydney, Newcastle",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "keyword",
+            "in": "query",
+            "description": "key point you want to search",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "checkin",
+            "in": "query",
+            "description": "checkin time",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "checkout",
+            "in": "query",
+            "description": "checkout time",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "numberofpeople",
+            "in": "query",
+            "description": "number of people",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "searchtype",
+            "in": "query",
+            "description": "relative search or direct search",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "suburb",
+            "in": "query",
+            "description": "specific suburb i.e. Kingsford, Ashfield",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Property"
+              }
+            }
+          },
+          "400": {
+            "description": "the parameters you input are invalid"
+          }
+        }
+      }
+    },
+    "/accommodation/room/{pid}": {
+      "get": {
+        "tags": [
+          "accommodation"
+        ],
+        "summary": "get the result for one specific searching information",
+        "operationId": "getAccommodationInfobyId",
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "name": "pid",
+            "in": "path",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/Property"
+            }
+          },
+          "400": {
+            "description": "the property id you input is invalid"
+          },
+          "404": {
+            "description": "No such property id"
+          }
+        }
+      }
+    },
+    "/accommodation/room/{pid}/comment": {
+      "get": {
+        "tags": [
+          "accommodation"
+        ],
+        "summary": "retrieve comments",
+        "operationId": "retrieve comment to specific property by pid",
+        "parameters": [
+          {
+            "name": "pid",
+            "in": "path",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "auth_token",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "retrieve successfully",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Comment"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid Id"
+          },
+          "404": {
+            "description": "pid not found"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "accommodation"
+        ],
+        "summary": "add comment",
+        "operationId": "add comment to specific property by pid",
+        "parameters": [
+          {
+            "name": "pid",
+            "in": "path",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "auth_token",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "order_id",
+            "in": "query",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "new comment information",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Comment"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "add successfully"
+          },
+          "400": {
+            "description": "Invalid Id or comment"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        },
+        "security": [
+          {
+            "APIKeyHeader": []
+          }
+        ]
+      }
+    },
+    "/messageBox": {
+      "get": {
+        "tags": [
+          "messageBox"
+        ],
+        "summary": "retrieve message",
+        "operationId": "retrieve message by sender and receiver",
+        "parameters": [
+          {
+            "name": "AB",
+            "in": "query",
+            "description": "A---B",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "auth_token",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "retrieve successfully",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Customer"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid Id or comment"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        },
+        "security": [
+          {
+            "APIKeyHeader": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "messageBox"
+        ],
+        "summary": "leave msg to landlord",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "new message information",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Message"
+            }
+          },
+          {
+            "name": "auth_token",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "add successfully"
+          },
+          "400": {
+            "description": "Invalid structure of message"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        },
+        "security": [
+          {
+            "APIKeyHeader": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "messageBox"
+        ],
+        "summary": "delete message",
+        "operationId": "delete message by sender and receiver",
+        "parameters": [
+          {
+            "name": "AB",
+            "in": "query",
+            "description": "A---B",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "auth_token",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "delete successfully"
+          },
+          "400": {
+            "description": "Invalid cid"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        },
+        "security": [
+          {
+            "APIKeyHeader": []
+          }
+        ]
+      }
+    },
+    "/chatbot": {
+      "post": {
+        "tags": [
+          "chatbot"
+        ],
+        "summary": "chatbot Api",
+        "parameters": [
+          {
+            "name": "q",
+            "in": "query",
+            "description": "question which user input",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "auth_token",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "reply successfully",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          "400": {
+            "description": "invalid query"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    },
+    "/landlord/{lid}": {
+      "get": {
+        "tags": [
+          "landlord"
+        ],
+        "summary": "Returns landlord information by lid",
+        "description": "Returns a json data about landlord information",
+        "operationId": "getlandlord",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "lid",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "auth_token",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/Customer"
+            }
+          },
+          "400": {
+            "description": "invalid account"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "No such account"
+          }
+        },
+        "security": [
+          {
+            "APIKeyHeader": []
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "landlord"
+        ],
+        "summary": "Update landlord information",
+        "operationId": "updatelandlord",
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "name": "lid",
+            "in": "path",
+            "description": "lid of landlord",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "auth_token",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "changes in landlord's information",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Customer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful changed",
+            "schema": {
+              "$ref": "#/definitions/Customer"
+            }
+          },
+          "400": {
+            "description": "invalid information given"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "lId not found"
+          }
+        },
+        "security": [
+          {
+            "APIKeyHeader": []
+          }
+        ]
+      }
+    },
+    "/landlord/{lid}/properties": {
+      "get": {
+        "tags": [
+          "landlord"
+        ],
+        "summary": "Returns landlord properties by lid",
+        "description": "Returns a json data about landlord's properties information",
+        "operationId": "getlandlordproperties",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "lid",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "pid",
+            "in": "query",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "auth_token",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Property"
+              }
+            }
+          },
+          "400": {
+            "description": "bad request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "pid or lic not found"
+          }
+        },
+        "security": [
+          {
+            "APIKeyHeader": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "landlord"
+        ],
+        "summary": "create a property information",
+        "operationId": "CreateLandlordproperties",
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "name": "lid",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "auth_token",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "new property information",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Property"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "create successfully"
+          },
+          "400": {
+            "description": "Invalid Id or property information"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        },
+        "security": [
+          {
+            "APIKeyHeader": []
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "landlord"
+        ],
+        "summary": "Update landlord information",
+        "operationId": "updatelandlordproperties",
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "name": "lid",
+            "in": "path",
+            "description": "ID of landlord",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "pid",
+            "in": "query",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "auth_token",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "changes in property information",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Property"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "change successfully"
+          },
+          "400": {
+            "description": "changing information is invalid"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Property not found"
+          }
+        },
+        "security": [
+          {
+            "APIKeyHeader": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "landlord"
+        ],
+        "summary": "Delete property information by pId",
+        "description": "For valid response try integer IDs with positive integer value.\\ \\ Negative or non-integer values will generate API errors",
+        "operationId": "deletelandlordproperties",
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "name": "lid",
+            "in": "path",
+            "description": "ID of the landlord whose property needs to be deleted",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "pid",
+            "in": "query",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "auth_token",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "delete successfully"
+          },
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "pId or lId not found"
+          }
+        },
+        "security": [
+          {
+            "APIKeyHeader": []
+          }
+        ]
+      }
+    },
+    "/landlord/{lid}/order": {
+      "get": {
+        "tags": [
+          "landlord"
+        ],
+        "summary": "Returns lease order by lid",
+        "description": "Returns a json data about landlord's order information",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "lid",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "order_id",
+            "in": "query",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "auth_token",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Order"
+              }
+            }
+          },
+          "400": {
+            "description": "invalid lid or order_id"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "pid or order_id not found"
+          }
+        },
+        "security": [
+          {
+            "APIKeyHeader": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "landlord"
+        ],
+        "summary": "Cancel order by order_id",
+        "description": "landlord can cancel order through this api",
+        "operationId": "cancelorder",
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "name": "lid",
+            "in": "path",
+            "description": "ID of the landlord whose order needs to be cancel",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "order_id",
+            "in": "query",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "cancel_order",
+            "in": "query",
+            "required": true,
+            "type": "boolean"
+          },
+          {
+            "name": "auth_token",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "delete successfully"
+          },
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "pId or lId not found"
+          }
+        },
+        "security": [
+          {
+            "APIKeyHeader": []
+          }
+        ]
+      }
+    },
+    "/login": {
+      "get": {
+        "tags": [
+          "account"
+        ],
+        "summary": "logs customer into the system",
+        "operationId": "loginUser",
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "name": "username",
+            "in": "query",
+            "description": "The user name for login",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "password",
+            "in": "query",
+            "description": "The password for login in clear text",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "string"
+            }
+          },
+          "400": {
+            "description": "Invalid username/password supplied",
+            "schema": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "/signup": {
+      "post": {
+        "tags": [
+          "account"
+        ],
+        "summary": "Create customer",
+        "operationId": "signupLandlord",
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Created customer object",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Customer"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "successful created"
+          },
+          "400": {
+            "description": "Account already exists"
+          }
+        }
+      }
+    },
+    "/user/{uid}": {
+      "get": {
+        "tags": [
+          "user"
+        ],
+        "summary": "Returns user information by id",
+        "operationId": "getUser",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "uid",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "auth_token",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/Customer"
+            }
+          },
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "information not found"
+          }
+        },
+        "security": [
+          {
+            "APIKeyHeader": []
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "user"
+        ],
+        "summary": "Updated user",
+        "description": "This can only be done by the logged in user.",
+        "operationId": "updateUser",
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "name": "uid",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "auth_token",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Updated user object",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Customer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "change successfully"
+          },
+          "400": {
+            "description": "Invalid uID given"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "User not found"
+          }
+        },
+        "security": [
+          {
+            "APIKeyHeader": []
+          }
+        ]
+      }
+    },
+    "/user/{uid}/order": {
+      "get": {
+        "tags": [
+          "user"
+        ],
+        "summary": "Returns order information by id",
+        "operationId": "getUserorder",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "uid",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "auth_token",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Order"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid uID supplied"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "information not found"
+          }
+        },
+        "security": [
+          {
+            "APIKeyHeader": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "user"
+        ],
+        "summary": "create a user information",
+        "operationId": "CreateUserorder",
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "name": "uid",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "auth_token",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "new order detail",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Order"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "create successfully"
+          },
+          "400": {
+            "description": "Invalid Id"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "user not found"
+          }
+        },
+        "security": [
+          {
+            "APIKeyHeader": []
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "user"
+        ],
+        "summary": "Updated user",
+        "description": "This can only be done by the logged in user.",
+        "operationId": "updateUserorder",
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "name": "uid",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "auth_token",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Update order like change checkin or checkout time",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Order"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "update successfully"
+          },
+          "400": {
+            "description": "Invalid user supplied"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "User not found"
+          }
+        },
+        "security": [
+          {
+            "APIKeyHeader": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "user"
+        ],
+        "summary": "Delete user's information or booking",
+        "description": "This can only be done by the logged in user.",
+        "operationId": "deleteUserorder",
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "name": "uid",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "auth_token",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "order_id",
+            "in": "query",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "delete successfully"
+          },
+          "400": {
+            "description": "Invalid uid supplied"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "User not found"
+          }
+        },
+        "security": [
+          {
+            "APIKeyHeader": []
+          }
+        ]
+      }
+    }
+  },
+  "securityDefinitions": {
+    "APIKeyHeader": {
+      "type": "apiKey",
+      "name": "X-auth_token",
+      "in": "header"
+    }
+  },
+  "definitions": {
+    "Customer": {
+      "type": "object",
+      "properties": {
+        "customer_id": {
+          "type": "string",
+          "example": "Avengers"
+        },
+        "password": {
+          "type": "string",
+          "example": "123456789Abc"
+        },
+        "first_name": {
+          "type": "string",
+          "example": "steve"
+        },
+        "last_name": {
+          "type": "string",
+          "example": "rogers"
+        },
+        "address": {
+          "type": "string",
+          "example": "438 Anzac Parade, Kingsford, 2032"
+        },
+        "email": {
+          "type": "string",
+          "example": "avengers@gmail.com"
+        },
+        "birthday": {
+          "type": "string",
+          "example": "27-06-2019"
+        },
+        "credit": {
+          "type": "number",
+          "example": 1000.0
+        },
+        "contact_number": {
+          "type": "string",
+          "example": 67146313
+        },
+        "gender": {
+          "type": "string",
+          "example": "male"
+        },
+        "account_type": {
+          "type": "boolean",
+          "default": false
+        },
+        "c_photo": {
+          "type": "string"
+        },
+        "host_order": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Order"
+          }
+        },
+        "trip_order": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Order"
+          }
+        },
+        "properties": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Property"
+          }
+        },
+        "new_message": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "message_box": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Message"
+          }
+        }
+      }
+    },
+    "Property": {
+      "type": "object",
+      "properties": {
+        "customer_id": {
+          "type": "string",
+          "example": "Avengers"
+        },
+        "property_id": {
+          "type": "integer",
+          "example": 1
+        },
+        "title": {
+          "type": "string",
+          "example": "Near to UNSW|Many choice of restaurant"
+        },
+        "address": {
+          "type": "string",
+          "example": "438 Anzac Parade, Kingsford, 2032"
+        },
+        "longitude": {
+          "type": "number"
+        },
+        "latitude": {
+          "type": "number"
+        },
+        "price": {
+          "type": "number",
+          "example": 500.0
+        },
+        "type": {
+          "type": "string",
+          "example": "appartment"
+        },
+        "size": {
+          "type": "number",
+          "example": 50.0
+        },
+        "wifi": {
+          "type": "boolean",
+          "default": true
+        },
+        "air-condition": {
+          "type": "boolean",
+          "default": true
+        },
+        "cooking": {
+          "type": "boolean",
+          "default": true
+        },
+        "pet": {
+          "type": "boolean",
+          "default": true
+        },
+        "bed_room": {
+          "type": "integer",
+          "example": 3
+        },
+        "bath_room": {
+          "type": "integer",
+          "example": 2
+        },
+        "parking": {
+          "type": "integer",
+          "example": 1
+        },
+        "location": {
+          "type": "string",
+          "example": "Sydney"
+        },
+        "suburb": {
+          "type": "string",
+          "example": "Kingsford"
+        },
+        "maxium_people": {
+          "type": "integer",
+          "example": 4
+        },
+        "about_the_place": {
+          "type": "string",
+          "example": "it is very convenient place, near to market and bus stop."
+        },
+        "rating": {
+          "type": "number",
+          "example": 4.5
+        },
+        "comments": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Comment"
+          }
+        },
+        "p_photo": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "discount": {
+          "type": "number",
+          "example": 0.8
+        },
+        "available_time": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Time_slot"
+          }
+        }
+      }
+    },
+    "Time_slot": {
+      "type": "object",
+      "properties": {
+        "time": {
+          "type": "string",
+          "example": "25-06-2019"
+        },
+        "status": {
+          "type": "boolean",
+          "default": true
+        }
+      }
+    },
+    "Comment": {
+      "type": "object",
+      "properties": {
+        "commenter": {
+          "type": "string",
+          "example": "Chengzhu Xie"
+        },
+        "avg_mark": {
+          "type": "number",
+          "example": 4.5
+        },
+        "cleanliness_mark": {
+          "type": "number",
+          "example": 4.0
+        },
+        "facility_mark": {
+          "type": "number",
+          "example": 4.0
+        },
+        "attitude_mark": {
+          "type": "number",
+          "example": 4.0
+        },
+        "text": {
+          "type": "string",
+          "example": "good accommodation!"
+        },
+        "reply": {
+          "type": "string",
+          "example": "Thx!"
+        },
+        "photo": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "date": {
+          "type": "string",
+          "example": "23-06-2019"
+        }
+      }
+    },
+    "Message": {
+      "type": "object",
+      "properties": {
+        "mid": {
+          "type": "string",
+          "example": "anhao---leekyi"
+        },
+        "time": {
+          "type": "string",
+          "example": "23-06-2019 09:00:00"
+        },
+        "text": {
+          "type": "string",
+          "example": "can i have a party in your house?"
+        }
+      }
+    },
+    "Order": {
+      "type": "object",
+      "properties": {
+        "order_id": {
+          "type": "integer",
+          "example": 1
+        },
+        "property_id": {
+          "type": "integer",
+          "example": 1
+        },
+        "host_id": {
+          "type": "string",
+          "example": "anhao"
+        },
+        "customer_id": {
+          "type": "string",
+          "example": "Leekyi"
+        },
+        "checkin_time": {
+          "type": "string",
+          "example": "02-07-2019"
+        },
+        "checkout_time": {
+          "type": "string",
+          "example": "05-07-2019"
+        },
+        "price": {
+          "type": "number",
+          "example": 500.0
+        },
+        "payment_type": {
+          "type": "string",
+          "example": "Ali pay"
+        },
+        "payment_time": {
+          "type": "string",
+          "example": "01-07-2019 09:00:00"
+        },
+        "commented": {
+          "type": "boolean",
+          "default": false
+        }
+      }
+    }
+  }
+}

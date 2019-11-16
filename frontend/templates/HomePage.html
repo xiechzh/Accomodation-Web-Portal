@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home Page</title>
+    <script src="../static/jquery-3.3.1/jquery-3.3.1.js"></script>
+    <script src="../static/js/bootstrap.js"></script>
+    <script src="../static/js/zzsc.js"></script>
+    <script src="../static/js/chatbot.js"></script>
+    <script src="../static/js/newproperty.js"></script>
+    <link rel="stylesheet" href="../static/css/bootstrap.css"/>
+    <link rel="stylesheet" href="../static/css/message_box_style.css"/>
+    <link rel="stylesheet" href="../static/css/zzsc.css"/>
+
+    <script>
+        function go() {
+            return url("List.html")
+        }
+    </script>
+    <script src="../static/js/homepage.js">
+
+    </script>
+</head>
+<body background="" style="background-size: cover; background-repeat:no-repeat; background-attachment:fixed; filter:alpha(opacity=50); -moz-opacity:0.5;">
+
+<div id="Chatbot" style="z-index: 9999; position: fixed ! important; right: 4%; bottom: 5%;">
+    <table width=""100% style="position: absolute; width:260px; right: 5%; top: 5%;">
+        <a id="chat_bot_btn" href="#modal-container-673916" role="button" class="btn" data-toggle="modal">
+             <button type="button" class="btn btn-info" style="border-radius: 50%; height: 60px; width: 60px; opacity: 0.7">
+                 <img src="../static/icon/robot.svg" style="height: 35px">
+             </button>
+         </a>
+
+			<div class="modal fade" id="modal-container-673916" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="float: right">
+				<div class="modal-dialog "  style="width: inherit; height: inherit; position: fixed ! important; right: 10%; bottom: 10%">
+					<div class="modal-content chat-container" style="width: 490px">
+						<div class="modal-header">
+							 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+							<h4 class="modal-title" id="myModalLabel" style="color: white">
+								ChatBot
+							</h4>
+						</div>
+						<div id="scroll_div" class="modal-body" onclick="this.scrollTop+=100" style="overflow:auto; height:400px;">
+
+                                <ul id="chatbot_body_ul" class="chat">
+                                    <li class="message left">
+                                        <img class="logo" src="../static/icon/robot.svg" alt="">
+                                        <p>Hi there!</p>
+                                    </li>
+                                </ul>
+						</div>
+                        <div class="modal-footer">
+                            <input id="chat_bot_input" type="text" class="text_input" placeholder="Message..."/>
+                        </div>
+					</div>
+
+				</div>
+
+			</div>
+    </table>
+</div>
+
+<div id="search_div" style="background: url(../static/image/test.jpg) no-repeat; background-size: cover">
+    <div class="container">
+        <div class="row clearfix">
+		    <div class="col-md-12 column">
+			<nav class="navbar navbar-default" role="navigation">
+				<div class="navbar-header" style="">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span></button>
+
+                    <a class="navbar-brand" href="/"><img src="../static/icon/logo.svg" style="margin-top: -39px; margin-bottom: -19px; margin-left: 8px" height="70" width="70" /> Go World!</a>
+				</div>
+
+				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+                    <ul id="nav_sign_in_ul" class="nav navbar-nav navbar-right" style="margin-right: 1%;">
+                        <li><a href="#" id="nav_sign_up"><span class="glyphicon glyphicon-user"></span> Sign up</a></li>
+                        <li><a href="#" id="nav_sign_in"><span class="glyphicon glyphicon-log-in"></span> Sign in</a></li>
+                    </ul>
+					<ul id="nav_name" class="nav navbar-nav navbar-right" style="margin-right: 1%; display: none">
+						<li id="c_photo_li" style="margin-top: 2%">
+                            <img id="c_photo" alt="40x40" src="../static/Unknown.png" class="img-circle" height="40" width="40" />
+						</li>
+
+						<li class="dropdown" style="">
+							 <a href="#" class="dropdown-toggle" data-toggle="dropdown"><font id="customer_name"></font><strong class="caret"></strong></a>
+							<ul class="dropdown-menu">
+								<li>
+									 <a id="personal_center_btn" href="#">Personal Center</a>
+								</li>
+								<li class="divider">
+								</li>
+								<li>
+									 <a id="sign_out_btn" href="/"><span class="glyphicon glyphicon-log-out"></span> Sign out</a>
+								</li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+
+			</nav>
+
+		</div>
+	    </div>
+        <div class="row clearfix" style="padding-bottom: 20%; margin-top: 10%">
+        <div class="col-md-1 column" style="">
+        </div>
+        <div class="col-md-4 column" style="padding: 0">
+                    <div id="info" style="display: none; height: 490px; background-color: rgba(255, 255, 255, 0.7); border-radius: 20px">
+                        <div id="sign_in" style="padding-left: 10%; padding-right: 10%; padding-top: 5%;">
+                            <div style="float: right">
+                                <img id="sign_in_close" src="../static/icon/search_close.svg" height="15" width="15"/>
+                            </div>
+                            <h3 id="sign_in_header" style="padding-bottom: 4%">Hi, There!</h3>
+                            <div id="sign_in_form" style="padding: 70px 0;">
+                                <form role="form" style="padding-left: 5%; padding-right: 5%">
+                                    <div class="form-group">
+                                         <label for="sign_in_account">Account Name</label><input type="text" class="form-control" id="sign_in_account" />
+                                    </div>
+                                    <div class="form-group">
+                                         <label for="sign_in_password">Password</label><input type="password" class="form-control" id="sign_in_password" />
+                                    </div>
+                                    <div style="float: right">
+                                        <button id="sign_in_btn" type="button" class="btn btn-default">Go!</button>
+
+                                    </div>
+                                </form>
+                                <script></script>
+                                <div style="float: left">
+
+                                    <a href="#" id="in_to_up">Not a member yet?</a><br>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="sign_up" style="display: none; padding-left: 10%; padding-right: 10%; padding-top: 5%; height: 490px">
+                            <div style="float: right">
+                                <img id="sign_up_close" src="../static/icon/search_close.svg" height="15" width="15"/>
+                            </div>
+                            <h3 id="sign_up_header" style="display:none;padding-bottom: 4%">Welcome!</h3>
+                            <div id="sign_up_form" style="display:none;padding: 50px 0;">
+                                <form role="form" style="padding-left: 5%; padding-right: 5%">
+                                    <div class="form-group">
+                                         <label for="account">Account Name</label><input type="text" class="form-control" id="account" />
+                                    </div>
+                                    <div class="form-group">
+                                         <label for="password_1">Password</label><input type="password" class="form-control" id="password_1" />
+                                    </div>
+                                    <div class="form-group">
+                                         <label for="password_2">Password confirm</label><input type="password" class="form-control" id="password_2" />
+                                    </div>
+                                    <div style="float: right">
+                                        <button id="sign_up_btn" type="button" class="btn btn-default">
+                                            Go!
+                                        </button>
+                                    </div>
+                                </form>
+                                <div style="float: left">
+                                    <a href="#" id="up_to_in">Back to sign in</a><br>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div id="normal_search" style="display: none;padding-left: 10%; padding-right: 10%; padding-top: 5%; height: 490px">
+                            <h3 id="normal_search_header" style="display: none; padding-bottom: 4%">Let's Talk about Your Trip!</h3>
+                            <div id="normal_search_form" style="display: none">
+                                <form role="form" style="padding-left: 5%; padding-right: 5%" action="/normal_search/all" method="get">
+                                    <div class="form-group">
+                                         <label for="destination">What's your destination?</label><input type="text" class="form-control" id="destination" name="destination" placeholder="Sydney"/>
+                                    </div>
+                                    <div class="form-group">
+                                         <label for="people_num">How many people?</label><input type="text" class="form-control" id="people_num" name="people_num" placeholder="1"/>
+                                    </div>
+                                    <div class="form-group">
+                                         <label for="start_date">When will you arrive?</label><input type="date" class="form-control" name="start_date" id="start_date"/>
+                                    </div>
+                                    <div class="form-group">
+                                         <label for="end_date">When will you departure?</label><input type="date" class="form-control" name="end_date" id="end_date"/>
+                                    </div>
+                                    <div style="float: right">
+                                        <button id="normal_search_btn" type="submit" class="btn btn-default">
+                                            Go!
+                                        </button>
+                                    </div>
+                                </form>
+                                <div style="float: left">
+                                    <a href="#" id="normal_to_event">Try event search</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="event_search" style="display: none;padding-left: 10%; padding-right: 10%; padding-top: 5%; height: 490px">
+                            <h3 id="event_search_header" style="display: none; padding-bottom: 4%">Let's Talk about Your Trip!</h3>
+                            <div id="event_search_form" style="display: none; padding: 70px 0;">
+                                <form role="form" style="padding-left: 5%; padding-right: 5%" action="/event_search/all" method="get">
+                                    <div class="form-group">
+                                         <label for="destination">What's your destination?</label><input type="text" class="form-control" id="event_destination" name="event_destination" placeholder="Sydney"/>
+                                    </div>
+                                    <div class="form-group">
+                                         <label for="event">What's the event?</label><input type="text" class="form-control" id="event" name="event" placeholder="Vivid Sydney"/>
+                                    </div>
+                                    <div style="float: right">
+                                        <button id="event_search_btn" type="submit" class="btn btn-default" >Go!</button>
+                                    </div>
+                                </form>
+                                <div style="float: left">
+                                    <a href="#" id="event_to_normal">Back to normal search</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <script>
+                        $(document).ready(function () {
+                            $("#sign_in_form").hide();
+                            $("#sign_in_header").hide();
+                            $("#sign_in").hide();
+                            $("#normal_search").show();
+                            $("#normal_search_header").show();
+                            $("#normal_search_form").show();
+                            //$("#welcome").fadeOut();
+                            $("#info").fadeIn("slow");
+                        });
+                    </script>
+
+				</div>
+        <div class="col-md-7 column" style="padding: 0">
+            <div id="welcome" style="height: 490px; background-color:rgba(255, 255, 255, 0);">
+            </div>
+        </div>
+    </div>
+    </div>
+</div>
+<script>
+
+</script>
+<div class="container">
+    <h2 style="margin-top: 6%; margin-bottom: 2%; color: #99cccc;display: none" >Find Your new trip!</h2>
+    <div class="row clearfix" style="display: none">
+        <div class="col-md-3 column">
+            <div id="recommend_div_1_1" style="position:relative;padding:3%; width:100%; background-color: rgba(255, 255, 204, 0.7); border-radius: 10px">
+                <div class="card img-fluid" style="width:100%;">
+                    <img class="card-img-top" src="../static/housetemplete/images.jpg" alt="Card image" style="width:100%; height: 200px; border-radius: 5px">
+                    <div class="card-img-overlay" style="margin-top:0">
+                        <h4 id="recommend_header_1_1" class="card-title">John Doe</h4>
+                        <p class="card-text">Some example text some example text. Some example text some example text. Some example text some example text. Some example text some example text.</p>
+                        <a href="#" class="btn btn-primary">Detail</a>
+                    </div>
+                </div>
+            </div>
+            <div id="recommend_div_1_2" style="display: none; position:relative;padding:3%; width:100%; background-color: rgba(186, 239, 239, 0.7); border-radius: 10px">
+                <div class="card img-fluid" style="width:100%;">
+                    <img class="card-img-top" src="../static/housetemplete/images5.jpg" alt="Card image" style="width:100%; height: 200px; border-radius: 5px">
+                    <div class="card-img-overlay" style="margin-top:0">
+                        <h4 class="card-title">John Doe</h4>
+                        <p class="card-text">Some example text some example text. Some example text some example text. Some example text some example text. Some example text some example text.</p>
+                        <a href="#" class="btn btn-primary">Detail</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 column">
+            <div id="recommend_div_2_1" style="position:relative;padding:3%; width:100%; background-color: rgba(255, 255, 204, 0.7); border-radius: 10px">
+                <div class="card img-fluid" style="width:100%;">
+                    <img class="card-img-top" src="../static/housetemplete/images2.jpg" alt="Card image" style="width:100%; height: 200px; border-radius: 5px">
+                    <div class="card-img-overlay" style="margin-top:0">
+                        <h4 class="card-title">John Doe</h4>
+                        <p class="card-text">Some example text some example text. Some example text some example text. Some example text some example text. Some example text some example text.</p>
+                        <a href="#" class="btn btn-primary">Detail</a>
+                    </div>
+                </div>
+            </div>
+            <div id="recommend_div_2_2" style="display: none; position:relative;padding:3%; width:100%; background-color: rgba(186, 239, 239, 0.7); border-radius: 10px">
+                <div class="card img-fluid" style="width:100%;">
+                    <img class="card-img-top" src="../static/housetemplete/images6.jpg" alt="Card image" style="width:100%; height: 200px; border-radius: 5px">
+                    <div class="card-img-overlay" style="margin-top:0">
+                        <h4 class="card-title">John Doe</h4>
+                        <p class="card-text">Some example text some example text. Some example text some example text. Some example text some example text. Some example text some example text.</p>
+                        <a href="#" class="btn btn-primary">Detail</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 column">
+            <div id="recommend_div_3_1" style="position:relative;padding:3%; width:100%; background-color: rgba(255, 255, 204, 0.7); border-radius: 10px">
+                <div class="card img-fluid" style="width:100%;">
+                    <img class="card-img-top" src="../static/housetemplete/images3.jpg" alt="Card image" style="width:100%; height: 200px; border-radius: 5px">
+                    <div class="card-img-overlay" style="margin-top:0">
+                        <h4 class="card-title">John Doe</h4>
+                        <p class="card-text">Some example text some example text. Some example text some example text. Some example text some example text. Some example text some example text.</p>
+                        <a href="#" class="btn btn-primary">Detail</a>
+                    </div>
+                </div>
+            </div>
+            <div id="recommend_div_3_2" style="display: none; position:relative;padding:3%; width:100%; background-color: rgba(186, 239, 239, 0.7); border-radius: 10px">
+                <div class="card img-fluid" style="width:100%;">
+                    <img class="card-img-top" src="../static/housetemplete/Unknown.jpg" alt="Card image" style="width:100%; height: 200px; border-radius: 5px">
+                    <div class="card-img-overlay" style="margin-top:0">
+                        <h4 class="card-title">John Doe</h4>
+                        <p class="card-text">Some example text some example text. Some example text some example text. Some example text some example text. Some example text some example text.</p>
+                        <a href="#" class="btn btn-primary">Detail</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 column">
+            <div id="recommend_div_4_1" style="position:relative;padding:3%; width:100%; background-color: rgba(255, 255, 204, 0.7); border-radius: 10px">
+                <div class="card img-fluid" style="width:100%;">
+                    <img class="card-img-top" src="../static/housetemplete/images4.jpg" alt="Card image" style="width:100%; height: 200px; border-radius: 5px">
+                    <div class="card-img-overlay" style="margin-top:0">
+                        <h4 class="card-title">John Doe</h4>
+                        <p class="card-text">Some example text some example text. Some example text some example text. Some example text some example text. Some example text some example text.</p>
+                        <a href="#" class="btn btn-primary">Detail</a>
+                    </div>
+                </div>
+            </div>
+            <div id="recommend_div_4_2" style="display: none; position:relative;padding:3%; width:100%; background-color: rgba(186, 239, 239, 0.7); border-radius: 10px">
+                <div class="card img-fluid" style="width:100%;">
+                    <img class="card-img-top" src="../static/housetemplete/Unknown2.jpg" alt="Card image" style="width:100%; height: 200px; border-radius: 5px">
+                    <div class="card-img-overlay" style="margin-top:0">
+                        <h4 class="card-title">John Doe</h4>
+                        <p class="card-text">Some example text some example text. Some example text some example text. Some example text some example text. Some example text some example text.</p>
+                        <a href="#" class="btn btn-primary">Detail</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div style="float: left">
+            <img id="left_btn" src="../static/icon/left.svg" height="100" width="60" style="margin-top: -400px; margin-left: -55px; background-color: rgba(255, 255, 255, 0.4)"/>
+        </div>
+        <div style="float: right">
+            <img id="right_btn" src="../static/icon/right.svg" height="100" width="60" style="margin-top: -400px; margin-right: -55px; background-color: rgba(255, 255, 255, 0.4)"/>
+        </div>
+    </div>
+    <h2 style="margin-top: 3%; margin-bottom: 2%; color: #99cccc">Let's have some fun!</h2>
+    <div class="row clearfix">
+        <div class="col-md-3 column">
+            <div id="event_div_1_1" style="position:relative;padding:3%; width:100%; background-color: rgba(220, 220, 220, 0.5); border-radius: 10px">
+                <div class="card img-fluid" style="width:100%;">
+                    <img id="event_image_1_1" class="card-img-top" src="../static/housetemplete/Unknown2.jpg" alt="Card image" style="width:100%; height: 200px; border-radius: 5px">
+                    <div class="card-img-overlay" style="margin-top:0">
+                        <div style="height: 100px">
+                            <h4 id="event_header_1_1" class="card-title">Title</h4>
+                        </div>
+                        <a id="event_href_1_1" href="#" class="btn btn-primary">Detail</a>
+                    </div>
+                </div>
+            </div>
+            <div id="event_div_1_2" style="display: none; position:relative;padding:3%; width:100%; background-color: rgba(220, 220, 220, 0.5); border-radius: 10px">
+                <div class="card img-fluid" style="width:100%;">
+                    <img id="event_image_1_2" class="card-img-top" src="../static/housetemplete/Unknown2.jpg" alt="Card image" style="width:100%; height: 200px; border-radius: 5px">
+                    <div class="card-img-overlay" style="margin-top:0">
+                        <div style="height: 100px">
+                            <h4 id="event_header_1_2" class="card-title">Title</h4>
+                        </div>
+                        <a id="event_href_1_2" href="#" class="btn btn-primary">Detail</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 column">
+            <div id="event_div_2_1" style="position:relative;padding:3%; width:100%; background-color: rgba(220, 220, 220, 0.5); border-radius: 10px">
+                <div class="card img-fluid" style="width:100%;">
+                    <img id="event_image_2_1" class="card-img-top" src="../static/housetemplete/Unknown2.jpg" alt="Card image" style="width:100%; height: 200px; border-radius: 5px">
+                    <div class="card-img-overlay" style="margin-top:0">
+                        <div style="height: 100px">
+                            <h4 id="event_header_2_1" class="card-title">Title</h4>
+                        </div>
+                        <a id="event_href_2_1" href="#" class="btn btn-primary">Detail</a>
+                    </div>
+                </div>
+            </div>
+            <div id="event_div_2_2" style="display: none; position:relative;padding:3%; width:100%; background-color: rgba(220, 220, 220, 0.5); border-radius: 10px">
+                <div class="card img-fluid" style="width:100%;">
+                    <img id="event_image_2_2" class="card-img-top" src="../static/housetemplete/Unknown2.jpg" alt="Card image" style="width:100%; height: 200px; border-radius: 5px">
+                    <div class="card-img-overlay" style="margin-top:0">
+                        <div style="height: 100px">
+                            <h4 id="event_header_2_2" class="card-title">Title</h4>
+                        </div>
+                        <a id="event_href_2_2" href="#" class="btn btn-primary">Detail</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 column">
+            <div id="event_div_3_1" style="position:relative;padding:3%; width:100%; background-color: rgba(220, 220, 220, 0.5); border-radius: 10px">
+                <div class="card img-fluid" style="width:100%;">
+                    <img id="event_image_3_1" class="card-img-top" src="../static/housetemplete/Unknown2.jpg" alt="Card image" style="width:100%; height: 200px; border-radius: 5px">
+                    <div class="card-img-overlay" style="margin-top:0">
+                        <div style="height: 100px">
+                            <h4 id="event_header_3_1" class="card-title">Title</h4>
+                        </div>
+                        <a id="event_href_3_1" href="#" class="btn btn-primary">Detail</a>
+                    </div>
+                </div>
+            </div>
+            <div id="event_div_3_2" style="display: none; position:relative;padding:3%; width:100%; background-color: rgba(220, 220, 220, 0.5); border-radius: 10px">
+                <div class="card img-fluid" style="width:100%;">
+                    <img id="event_image_3_2" class="card-img-top" src="../static/housetemplete/Unknown2.jpg" alt="Card image" style="width:100%; height: 200px; border-radius: 5px">
+                    <div class="card-img-overlay" style="margin-top:0">
+                        <div style="height: 100px">
+                            <h4 id="event_header_3_2" class="card-title">Title</h4>
+                        </div>
+                        <a id="event_href_3_2" href="#" class="btn btn-primary">Detail</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 column">
+            <div id="event_div_4_1" style="position:relative;padding:3%; width:100%; background-color: rgba(220, 220, 220, 0.5); border-radius: 10px">
+                <div class="card img-fluid" style="width:100%;">
+                    <img id="event_image_4_1" class="card-img-top" src="../static/housetemplete/Unknown2.jpg" alt="Card image" style="width:100%; height: 200px; border-radius: 5px">
+                    <div class="card-img-overlay" style="margin-top:0">
+                        <div style="height: 100px">
+                            <h4 id="event_header_4_1" class="card-title">Title</h4>
+                        </div>
+                        <a id="event_href_4_1" href="#" class="btn btn-primary">Detail</a>
+                    </div>
+                </div>
+            </div>
+            <div id="event_div_4_2" style="display: none; position:relative;padding:3%; width:100%; background-color: rgba(220, 220, 220, 0.5); border-radius: 10px">
+                <div class="card img-fluid" style="width:100%;">
+                    <img id="event_image_4_2" class="card-img-top" src="../static/housetemplete/Unknown2.jpg" alt="Card image" style="width:100%; height: 200px; border-radius: 5px">
+                    <div class="card-img-overlay" style="margin-top:0">
+                        <div style="height: 100px">
+                            <h4 id="event_header_4_2" class="card-title">Title</h4>
+                        </div>
+                        <a id="event_href_4_2" href="#" class="btn btn-primary">Detail</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div style="float: left">
+            <img id="event_left_btn" src="../static/icon/left.svg" height="100" width="60" style="margin-top: -400px; margin-left: -55px; background-color: rgba(255, 255, 255, 0.4)"/>
+        </div>
+        <div style="float: right">
+            <img id="event_right_btn" src="../static/icon/right.svg" height="100" width="60" style="margin-top: -400px; margin-right: -55px; background-color: rgba(255, 255, 255, 0.4)"/>
+        </div>
+    </div>
+</div>
+<div class="" style="background-color: rgba(220, 220, 220, 0.2); height: 300px; margin-top: 5%; border-top-width: 1px; border-top-style:solid; border-top-color: #99cccc">
+    <div class="container">
+        <div class="row clearfix" style="margin-top: 4%">
+            <div class="col-md-4 column" style="text-align: left; padding-left: 5%">
+                <h4 style="color: #336699">About</h4>
+                <a href="#">About us</a><br>
+                <a href="#">Join us</a><br>
+                <a href="#">Ad choices</a>
+            </div>
+            <div class="col-md-4 column" style="text-align: left; padding-left: 5%">
+                <h4 style="color: #336699">Business</h4>
+                <a href="#">Business Support</a><br>
+                <a href="#">Become landlord</a>
+            </div>
+            <div class="col-md-4 column" style="text-align: left; padding-left: 5%">
+                <h4 style="color: #336699">Developer</h4>
+                <a href="#">Hao An</a><br>
+                <a href="#">Chengzhu Xie</a><br>
+                <a href="#">Jianyu Yi</a><br>
+                <a href="#">Luyao Zhang</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>

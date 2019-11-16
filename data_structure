@@ -1,0 +1,86 @@
+ #customer
+ #include both landlord and tenant
+ {
+ 	"customer_id": "anhao",      #account
+ 	"password": "123456agb",
+ 	"First_name": "Hao",
+ 	"Last_name": "An",
+ 	"address": "438 Anzac Parade, Kingsford,2032",
+ 	"email":"12345@qq.com",
+ 	"birthday": "27-06-2019",
+ 	"credit": 1000,
+ 	"contact_number": 0400111111,
+ 	"gender": "male",
+ 	"account_type": false,  #boolen type
+ 	"host_order":[],
+ 	"trip_order":[],
+ 	"properties":[],
+	new_message:[],     #["anhao","leekyi"]
+ 	"message_box":[{"mid":"anhao---leekyi",
+			"time":"23-06-2019 09:00:00",
+			"text":"can i have a party in your house?"
+		      }]    
+ }
+
+
+ #property
+ {
+  	"customer_id": "anhao",
+ 	"property_id": 1,
+ 	"address":"438 Anzac Parade, Kingsford, 2032",
+	"longitude": 23.45   #decimals
+        "latitude": 34.23
+ 	"price": 500,
+ 	"type":"appartment",
+ 	"size":50,
+ 	"WiFi": True,           #boolen
+ 	"Air-condition": True,  #boolen
+ 	"cooking": True,        #boolen
+ 	"pet": True,            #boolen
+ 	"bed_room": 3,
+ 	"bath_room":2,
+ 	"parking": 1,
+ 	"location": "Sydney",
+ 	"suburb": "Kingsford",
+ 	"maxium_people": 4,
+	"about_the_place":"000000000000",
+ 	"rating": 4.5,  #float
+ 	"comments":[{
+ 					"commenter": "Chengzhu Xie", #customer id see line 4
+ 					"avg_mark": 4,      #float between 0~5
+ 					"cleanliness_mark": 3,  #float between 0~5
+ 					"facility_mark": 4,     #float between 0~5
+ 					"attitude_mark": 5,     #float between 0~5
+ 					"text": "good position",
+					"reply":"Thx!"
+ 					"photo":[],
+ 					"date":"23-06-2019"
+ 				}],
+ 	"p_photo":[],
+ 	"discount": 0.8,   #float with range between 0~1
+ 	"available_time": [{"time": "25-06-2019", "status":True}, 
+			   {"time": "26-06-2019", "status":True},
+		           {"time": "27-06-2019", "status":True},
+			   {"time": "28-06-2019", "status":True},
+			   {"time": "29-06-2019", "status":True},
+			   {"time": "30-06-2019", "status":True}
+			   ]
+
+ }
+
+
+#order
+{
+	"order_id":1,
+	"property_id": 1,
+	"host_id": "anhao",
+	"customer_id": "Leekyi",
+	"checkin_time": "25-06-2019",
+	"checkout_time": "27-06-2019",
+	"price": 500,
+	"payment_type": "Ali pay",
+	"payment_time": "23-06-2019 09:00:00"
+}
+
+
+

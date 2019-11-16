@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>New Property</title>
+    <script src="../static/jquery-3.3.1/jquery-3.3.1.js"></script>
+    <script src="../static/js/bootstrap.js"></script>
+    <link rel="stylesheet" href="../static/css/bootstrap.css"/>
+    <link rel="stylesheet" href="../static/css/message_box_style.css"/>
+    <script src="../static/js/test1.js">
+    </script>
+
+</head>
+<body>
+
+<div id="Chatbot" style="z-index: 9999; position: fixed ! important; right: 4%; bottom: 5%;">
+    <table width=""100% style="position: absolute; width:260px; right: 5%; top: 5%;">
+        <a id="modal-673916" href="#modal-container-673916" role="button" class="btn" data-toggle="modal">
+             <button type="button" class="btn btn-info" style="border-radius: 50%; height: 60px; width: 60px; opacity: 0.7">
+                 <img src="../static/icon/robot.svg" style="height: 35px">
+             </button>
+         </a>
+
+			<div class="modal fade" id="modal-container-673916" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="float: right">
+				<div class="modal-dialog "  style="width: inherit; height: inherit; position: fixed ! important; right: 10%; bottom: 10%">
+					<div class="modal-content chat-container" style="width: 490px">
+						<div class="modal-header">
+							 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+							<h4 class="modal-title" id="myModalLabel" style="color: white">
+								ChatBot
+							</h4>
+						</div>
+						<div class="modal-body" style="overflow:scroll; height:400px;">
+
+                                <ul class="chat">
+                                    <li class="message right">
+                                        <img class="logo" src="../static/Unknown.png" alt="">
+                                        <p>I'm hungry!</p>
+                                    </li>
+                                    <li class="message left">
+                                        <img class="logo" src="../static/icon/robot.svg" alt="">
+                                        <p>Hi hungry, nice to meet you. I'm Dad.</p>
+                                    </li>
+                                    <li class="message right">
+                                        <img class="logo" src="../static/Unknown.png" alt="">
+                                        <p>DAD! I'm serious!</p>
+                                    </li>
+                                    <li class="message left">
+                                        <img class="logo" src="../static/icon/robot.svg" alt="">
+                                        <p>I thought your name was hungry...?</p>
+                                    </li>
+                                </ul>
+
+						</div>
+                        <div class="modal-footer">
+                            <input type="text" class="text_input" placeholder="Message..."/>
+                        </div>
+					</div>
+
+				</div>
+
+			</div>
+    </table>
+</div>
+
+<div class="container">
+	<div class="row clearfix">
+		<div class="col-md-12 column">
+			<nav class="navbar navbar-default" role="navigation">
+				<div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span></button>
+                    <a class="navbar-brand" href="test.html">
+                        <img src="../static/icon/logo.svg" style="margin-top: -39px; margin-bottom: -19px; margin-left: 8px" height="70" width="70" /> Go World!</a>
+				</div>
+
+				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+					<ul class="nav navbar-nav">
+						<li class="active">
+							 <a href="#">Back</a>
+						</li>
+						<li>
+							 <a href="#">Link</a>
+						</li>
+						<li class="dropdown">
+							 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown<strong class="caret"></strong></a>
+							<ul class="dropdown-menu">
+								<li>
+									 <a href="#">Action</a>
+								</li>
+								<li>
+									 <a href="#">Another action</a>
+								</li>
+								<li>
+									 <a href="#">Something else here</a>
+								</li>
+								<li class="divider">
+								</li>
+								<li>
+									 <a href="#">Separated link</a>
+								</li>
+								<li class="divider">
+								</li>
+								<li>
+									 <a href="#">One more separated link</a>
+								</li>
+							</ul>
+						</li>
+					</ul>
+					<form class="navbar-form navbar-left" role="search">
+						<div class="form-group">
+							<input type="text" class="form-control" />
+						</div> <button type="submit" class="btn btn-default">Search</button>
+					</form>
+					<ul id="nav_name" class="nav navbar-nav navbar-right" style="margin-right: 1%">
+						<li style="margin-top: 2%">
+							 <img alt="40x40" src="../static/Unknown.png" class="img-circle" height="40" width="40" />
+						</li>
+						<li class="dropdown">
+							 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Jianyu Yi<strong class="caret"></strong></a>
+							<ul class="dropdown-menu">
+								<li>
+									 <a href="Personalinfo.html">Personal Center</a>
+								</li>
+								<li>
+									 <a href="#">Share your room!</a>
+								</li>
+								<li class="divider">
+								</li>
+								<li>
+									 <a href="#" onclick="sign_out()">Sign out</a>
+								</li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+
+			</nav>
+            <div class="row clearfix" id="headline">
+                <div class="col-md-1 column">
+                </div>
+                <div class="col-md-10 column">
+                    <div class="page-header">
+                        <h1>
+                            Share Your Room <small>Share your world</small>
+                        </h1>
+                    </div>
+                </div>
+                <div class="col-md-1 column">
+                </div>
+            </div>
+            <div class="row clearfix">
+                <div class="col-md-2 column">
+                </div>
+                <div id="property_info_editor" class="col-md-8 column" style="margin-top: 20px; height: 900px; border-color: #3c3c3c; border-radius: 10px; border-style: solid; border-width:1px">
+                    <div id="property_info_editor_form" style="margin-left: 14px; margin-right: 14px; margin-top: 24px; margin-bottom: 24px">
+                        <form role="form" method="post" action="{{ url_for('post_property', id=id) }}" enctype="multipart/form-data" id="submit_form">
+                            <h3 style="margin-bottom: 15px">Property</h3>
+                            <div class="form-group">
+                                 <div class="col-md-6 column" style="margin-bottom: 18px">
+                                     <label for="property_location">City</label><input type="text" class="form-control" name="property_location" />
+                                 </div>
+                                 <div class="col-md-6 column" style="margin-bottom: 18px">
+                                     <label for="property_suburb">Suburb</label><input type="text" class="form-control" name="property_suburb" />
+                                 </div>
+                            </div>
+                            <div class="form-group">
+                                 <label for="property_address">Address</label><input type="text" class="form-control" name="property_address" />
+                            </div>
+                            <div class="form-group" style="margin-left: 5.5%">
+                                <div class="col-md-4 column">
+                                    <label for="property_type">Type</label><br>
+                                    <select name="property_type" style="width:100px; height: 34px">
+                                        <option value="Apartment">Apartment</option>
+                                        <option value="Unit">Unit</option>
+                                        <option value="House">House</option>
+                                        <option value="Townhouse">Townhouse</option>
+                                        <option value="Rural">Rural</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-4 column">
+                                    <label for="property_size">Size</label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon">sq.m.</span>
+                                        <input style="width: 100px" type="number" class="form-control" name="property_size" min="1"/>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 column">
+                                    <label for="property_price">Price</label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon">AUD</span>
+                                        <input style="width: 100px" type="number" class="form-control" name="property_price" min="1"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group" style="margin-left: 38px">
+                                <div class="col-md-3 column" style="margin-top: 20px; margin-bottom: 18px">
+                                    <label for="property_bedroom">Bedroom</label><br>
+                                    <select name="property_bedroom" style="width:100px; height: 34px">
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-3 column" style="margin-top: 20px; margin-bottom: 18px">
+                                    <label for="property_bathroom">Bathroom</label><br>
+                                    <select name="property_bathroom" style="width:100px; height: 34px">
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-3 column" style="margin-top: 20px; margin-bottom: 18px">
+                                    <label for="property_parking">Parking</label><br>
+                                    <select name="property_parking" style="width:100px; height: 34px">
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-3 column" style="margin-top: 20px; margin-bottom: 18px">
+                                    <label for="property_max_people">Max People</label><input style="width: 100px" type="number" class="form-control" name="property_max_people" min="1"/>
+                                </div>
+                            </div>
+                            <div class="form-group" style="margin-left: 38px">
+                                <div class="col-md-3 column" style="margin-bottom: 22px">
+                                    <label for="WIFI">WIFI</label><br>
+                                    <select name="WIFI" style="width:100px; height: 34px">
+                                        <option value="YES">YES</option>
+                                        <option value="NO">NO</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-3 column" style="margin-bottom: 22px">
+                                    <label for="Air_condition">Air-condition</label><br>
+                                    <select name="Air_condition" style="width:100px; height: 34px">
+                                        <option value="YES">YES</option>
+                                        <option value="NO">NO</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-3 column" style="margin-bottom: 22px">
+                                    <label for="Cooking">Cooking</label><br>
+                                    <select name="Cooking" style="width:100px; height: 34px">
+                                        <option value="YES">YES</option>
+                                        <option value="NO">NO</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-3 column" style="margin-bottom: 22px">
+                                    <label for="Pet">Pet</label><br>
+                                    <select name="Pet" style="width:100px; height: 34px">
+                                        <option value="YES">YES</option>
+                                        <option value="NO">NO</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="property_photos" style="margin-left: 42%; margin-bottom: 2%">Upload Photos</label>
+                                <input type="file" multiple name="upload" style="margin-left: 36%"/>
+                            </div>
+                            <div class="form-group" style="margin-left: 16%">
+                                <div class="col-md-6 column" style="margin-bottom: 18px">
+                                    <label for="start_date">Start Date</label><br>
+                                    <input type="date" name="start_date" id="start_date">
+                                </div>
+                                <div class="col-md-6 column" style="margin-bottom: 18px">
+                                    <label for="end_date">End Date</label><br>
+                                    <input type="date" name="end_date" id="end_date">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="property_title" style="margin-left: 47%; margin-bottom: 2%">Title</label>
+                                <input class="form-control" style="width: 400px; margin-left: 22%" name="property_title"/>
+                            </div>
+                            <div class="form-group">
+                                <label for="property_description" style="margin-left: 44%">Description</label>
+                                <textarea rows="10" cols="10" class="form-control" style="width: 400px; height: 140px; margin-left: 22%" name="property_description" form="submit_form"></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-default" style="margin-bottom: 20px; margin-left: 46%">OK</button>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-md-2 column">
+				</div>
+            </div>
+
+		</div>
+	</div>
+</div>
+
+
+</body>
+</html>

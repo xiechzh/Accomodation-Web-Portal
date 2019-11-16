@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Room</title>
+    <script src="../static/jquery-3.3.1/jquery-3.3.1.js"></script>
+    <script src="../static/js/bootstrap.js"></script>
+    <link rel="stylesheet" href="../static/css/bootstrap.css"/>
+    <link rel="stylesheet" href="../static/css/message_box_style.css"/>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAANyBQ6ikIoa53iMdahFL99Bjt0oBmWpc&libraries=places&callback=initMap"
+          type="text/javascript"></script>
+    <script>
+        function restaurant_recommend() {
+            document.getElementById("restaurant_recommend").className="active";
+            document.getElementById("shopping_recommend").className="";
+            document.getElementById("gym_recommend").className="";
+            document.getElementById("restaurant_recommend_list").style.display="";
+            document.getElementById("shopping_recommend_list").style.display="none";
+            document.getElementById("gym_recommend_list").style.display="none";
+            document.getElementById("search_recommend_list").style.display="none";
+        }
+
+        function shopping_recommend() {
+            document.getElementById("restaurant_recommend").className="";
+            document.getElementById("shopping_recommend").className="active";
+            document.getElementById("gym_recommend").className="";
+            document.getElementById("shopping_recommend_list").style.display="";
+            document.getElementById("restaurant_recommend_list").style.display="none";
+            document.getElementById("gym_recommend_list").style.display="none";
+            document.getElementById("search_recommend_list").style.display="none";
+        }
+
+        function gym_recommend() {
+            document.getElementById("restaurant_recommend").className="";
+            document.getElementById("shopping_recommend").className="";
+            document.getElementById("gym_recommend").className="active";
+            document.getElementById("gym_recommend_list").style.display="";
+            document.getElementById("restaurant_recommend_list").style.display="none";
+            document.getElementById("shopping_recommend_list").style.display="none";
+            document.getElementById("search_recommend_list").style.display="none";
+        }
+    </script>
+</head>
+<body>
+
+<div id="Chatbot" style="z-index: 9999; position: fixed ! important; right: 4%; bottom: 5%;">
+    <table width=""100% style="position: absolute; width:260px; right: 5%; top: 5%;">
+        <a id="modal-673916" href="#modal-container-673916" role="button" class="btn" data-toggle="modal">
+             <button type="button" class="btn btn-info" style="border-radius: 50%; height: 60px; width: 60px; opacity: 0.7">
+                 <img src="../static/icon/robot.svg" style="height: 35px">
+             </button>
+         </a>
+
+			<div class="modal fade" id="modal-container-673916" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="float: right">
+				<div class="modal-dialog "  style="width: inherit; height: inherit; position: fixed ! important; right: 10%; bottom: 10%">
+					<div class="modal-content chat-container" style="width: 490px">
+						<div class="modal-header">
+							 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+							<h4 class="modal-title" id="myModalLabel" style="color: white">
+								ChatBot
+							</h4>
+						</div>
+						<div class="modal-body" style="overflow:scroll; height:400px;">
+
+                                <ul class="chat">
+                                    <li class="message right">
+                                        <img class="logo" src="../static/Unknown.png" alt="">
+                                        <p>I'm hungry!</p>
+                                    </li>
+                                    <li class="message left">
+                                        <img class="logo" src="../static/icon/robot.svg" alt="">
+                                        <p>Hi hungry, nice to meet you. I'm Dad.</p>
+                                    </li>
+                                    <li class="message right">
+                                        <img class="logo" src="../static/Unknown.png" alt="">
+                                        <p>DAD! I'm serious!</p>
+                                    </li>
+                                    <li class="message left">
+                                        <img class="logo" src="../static/icon/robot.svg" alt="">
+                                        <p>I thought your name was hungry...?</p>
+                                    </li>
+                                </ul>
+
+						</div>
+                        <div class="modal-footer">
+                            <input type="text" class="text_input" placeholder="Message..."/>
+                        </div>
+					</div>
+
+				</div>
+
+			</div>
+    </table>
+</div>
+<div id="Massgaebox" style="z-index: 9999; position: fixed ! important; left: 4%; bottom: 5%;">
+    <table width=""100% style="position: absolute; width:260px; right: 5%; top: 5%;">
+         <a id="modal-673915" href="#modal-container-673915" role="button" class="btn" data-toggle="modal">
+             <button type="button" class="btn btn-info" style="border-radius: 50%; height: 60px; width: 60px; opacity: 0.7">
+                 <img src="../static/icon/talk.svg" style="height: 30px">
+             </button>
+         </a>
+
+			<div class="modal fade" id="modal-container-673915" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="float: left">
+				<div class="modal-dialog "  style="width: inherit; height: inherit; position: fixed ! important; left: 10%; bottom: 10%">
+					<div class="modal-content chat-container" style="width: 490px">
+						<div class="modal-header">
+							 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+							<h4 class="modal-title" id="myModalLabel" style="color: white">
+								Jianyu Yi
+							</h4>
+						</div>
+						<div class="modal-body" style="overflow:scroll; height:400px;">
+
+                                <ul class="chat">
+                                    <li class="message right">
+                                        <img class="logo" src="../static/Unknown.png" alt="">
+                                        <p>I'm hungry!</p>
+                                    </li>
+                                    <li class="message left">
+                                        <img class="logo" src="../static/icon/robot.svg" alt="">
+                                        <p>Hi hungry, nice to meet you. I'm Dad.</p>
+                                    </li>
+                                    <li class="message right">
+                                        <img class="logo" src="../static/Unknown.png" alt="">
+                                        <p>DAD! I'm serious!</p>
+                                    </li>
+                                    <li class="message left">
+                                        <img class="logo" src="../static/icon/robot.svg" alt="">
+                                        <p>I thought your name was hungry...?</p>
+                                    </li>
+                                </ul>
+
+						</div>
+                        <div class="modal-footer">
+                            <input type="text" class="text_input" placeholder="Message..."/>
+                        </div>
+					</div>
+
+				</div>
+
+			</div>
+    </table>
+</div>
+<div class="container">
+	<div class="row clearfix">
+		<div class="col-md-12 column">
+			<nav class="navbar navbar-default" role="navigation">
+				<div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span></button>
+                    <a class="navbar-brand" href="test.html">
+                        <img src="../static/icon/logo.svg" style="margin-top: -39px; margin-bottom: -19px; margin-left: 8px" height="70" width="70" /> Go World!</a>
+				</div>
+
+				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+					<ul class="nav navbar-nav">
+						<li class="active">
+							 <a href="#">Back</a>
+						</li>
+						<li>
+							 <a href="#">Link</a>
+						</li>
+						<li class="dropdown">
+							 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown<strong class="caret"></strong></a>
+							<ul class="dropdown-menu">
+								<li>
+									 <a href="#">Action</a>
+								</li>
+								<li>
+									 <a href="#">Another action</a>
+								</li>
+								<li>
+									 <a href="#">Something else here</a>
+								</li>
+								<li class="divider">
+								</li>
+								<li>
+									 <a href="#">Separated link</a>
+								</li>
+								<li class="divider">
+								</li>
+								<li>
+									 <a href="#">One more separated link</a>
+								</li>
+							</ul>
+						</li>
+					</ul>
+					<form class="navbar-form navbar-left" role="search">
+						<div class="form-group">
+							<input type="text" class="form-control" />
+						</div> <button type="submit" class="btn btn-default">Search</button>
+					</form>
+					<ul id="nav_sign_in_ul" class="nav navbar-nav navbar-right" style="margin-right: 1%;">
+                        <li><a href="#" id="nav_sign_up"><span class="glyphicon glyphicon-user"></span> Sign up</a></li>
+                        <li><a href="#" id="nav_sign_in"><span class="glyphicon glyphicon-log-in"></span> Sign in</a></li>
+                    </ul>
+					<ul id="nav_name" class="nav navbar-nav navbar-right" style="margin-right: 1%; display: none">
+						<li style="padding-top: 2%">
+							 <img alt="40x40" src="../static/Unknown.png" class="img-circle" height="40" width="40" />
+						</li>
+						<li class="dropdown">
+							 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Jianyu Yi<strong class="caret"></strong></a>
+							<ul class="dropdown-menu">
+								<li>
+									 <a href="Personalinfo.html">Personal Center</a>
+								</li>
+								<li>
+									 <a href="#">Share your room!</a>
+								</li>
+								<li class="divider">
+								</li>
+								<li>
+									 <a href="#">Sign out</a>
+								</li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+			</nav>
+            <div class="row clearfix" id="headline">
+                <div class="col-md-1 column">
+                </div>
+                <div class="col-md-10 column">
+                    <div class="page-header">
+                        <h1>
+                            Room near Kingsford <small>Best Choice for Study in UNSW</small>
+                        </h1>
+                    </div>
+                </div>
+                <div class="col-md-1 column">
+                </div>
+            </div>
+			<div class="row clearfix">
+				<div class="col-md-1 column">
+				</div>
+				<div class="col-md-6 column" id="room_info">
+					<div id="myCarousel" class="carousel slide">
+                        <!-- 轮播（Carousel）指标 -->
+                        <ol class="carousel-indicators" id="images_position_list">
+                            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                            <li data-target="#myCarousel" data-slide-to="1"></li>
+                            <li data-target="#myCarousel" data-slide-to="2"></li>
+                        </ol>
+                        <!-- 轮播（Carousel）项目 -->
+                        <div class="carousel-inner" id="images_list">
+                            <div class="item active">
+                                <img src="../static/housetemplete/images.jpg" alt="First slide" style="height: 400px">
+                            </div>
+                            <div class="item">
+                                <img src="../static/housetemplete/images2.jpg" alt="Second slide" style="height: 400px">
+                            </div>
+                            <div class="item">
+                                <img src="../static/housetemplete/images3.jpg" alt="Third slide" style="height: 400px">
+                            </div>
+                        </div>
+                        <!-- 轮播（Carousel）导航 -->
+                        <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+                            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+                            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </div>
+
+                    <div class="col-md-12 column" id="property_info" style="margin-top: 5%; overflow:scroll; height:210px;background-color:rgba(1, 1, 1, 0.05);">
+                        <dl>
+                            <dt id="price" >
+                                <img src="../static/icon/price.svg" style="height: 20px">&emsp;$100
+                            </dt><dd></dd>
+                            <dt>
+                                <img src="../static/icon/ios-bed.svg" style="height: 20px">&emsp;One double size bed
+                            </dt><dd></dd>
+                            <dt>
+                                <img src="../static/icon/Shower-.svg" style="height: 20px">&emsp;Hot water for 24 hours 7 days
+                            </dt><dd></dd>
+                            <dt>
+                                <img src="../static/icon/parking-box-fill.svg" style="height: 20px">&emsp;Street parking
+                            </dt><dd></dd>
+                            <dt>
+                                <img src="../static/icon/home1.svg" style="height: 20px">&emsp;A Microwave oven in kitchen. No pets. No party.
+                            </dt><dd></dd>
+                        </dl>
+                            <address>
+                                <strong>Twitter, Inc.</strong>
+                                <br /> 6 forsyth St.
+                                <br /> Kingsford, Syd 2032<br />
+                                <img src="../static/icon/phone-fill.svg" style="height: 20px"> 0402-544-785
+                            </address>
+                    </div>
+
+				</div>
+				<div class="col-md-4 column" id="recommend_inf">
+                    <div class="col-md-12 column" id="map" style=" height: 280px;">
+
+                    </div>
+                    <script type="text/javascript">
+                        var locations = [
+                          ['The Spanish Fly', -33.920098, 151.243046, 3]
+
+                        ];
+
+                        var map = new google.maps.Map(document.getElementById('map'), {
+                          zoom: 14,
+                          center: new google.maps.LatLng(-33.920098, 151.243046),
+                          mapTypeId: google.maps.MapTypeId.ROADMAP
+                        });
+
+                        var infowindow = new google.maps.InfoWindow();
+
+                        var marker, i;
+
+                        var image = {
+                            url: "icon/address-b.svg",
+                            size: new google.maps.Size(71, 71),
+                            origin: new google.maps.Point(0, 0),
+                            anchor: new google.maps.Point(17, 34),
+                            scaledSize: new google.maps.Size(25, 25)
+                        };
+
+                        for (i = 0; i < locations.length; i++) {
+                          marker = new google.maps.Marker({
+                            position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+                            //label: locations[i][3].toString(),
+                                map: map,
+                              icon: image
+                          });
+
+                          google.maps.event.addListener(marker, 'click', (function(marker, i) {
+                            return function() {
+                              infowindow.setContent(locations[i][0]);
+                              infowindow.open(map, marker);
+                            }
+                          })(marker, i));
+                        }
+                    </script>
+                    <div class="col-md-12 column" id="recommend_tag" style="padding-top: 1%">
+                        <h4>Discover</h4>
+                    </div>
+                    <div class="col-md-12 column" id="recommend_tag" style="">
+                        <ul class="nav nav-pills" >
+
+                            <li class="active" id="restaurant_recommend" onclick="restaurant_recommend()">
+                                 <a href="#"><img src="../static/icon/sort_dinner.svg" style="height: 20px"></a>
+                            </li>
+                            <li class="" id="shopping_recommend" onclick="shopping_recommend()">
+                                 <a href="#"><img src="../static/icon/shopping.svg" style="height: 20px"></a>
+                            </li>
+                            <li class="" id="gym_recommend" onclick="gym_recommend()">
+                                 <a href="#"><img src="../static/icon/gymnasium.svg" style="height: 20px"></a>
+                            </li>
+                            <li class="pull-right">
+                                <button class="btn btn-default" type="button">
+                                    Go!
+                                </button>
+                            </li>
+                            <li class="pull-right">
+                                <input type="text" class="form-control" style="width: 100px">
+
+                            </li>
+
+
+                        </ul>
+
+                    </div>
+                    <div class="col-md-12 column" id="recommend_list" style="margin-top: 2%; overflow:scroll; height:280px;">
+                        <div id="restaurant_recommend_list" style="">
+                            <div class="media well" style="margin: 4px; padding: 4%">
+                                <a href="#" class="pull-left"><img src="../static/housetemplete/Unknown.jpg" height="70" width="70" class="media-object" alt='' /></a>
+                                <div class="media-body">
+                                    <h4 class="media-heading">
+                                        Sushi inn
+                                    </h4>
+                                    <div>
+                                        This is a wonderful place for holidays!
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="media well" style="margin: 4px; padding: 4%">
+                                <a href="#" class="pull-left"><img src="../static/housetemplete/Unknown2.jpg" height="70" width="70" class="media-object" alt='' /></a>
+                                <div class="media-body">
+                                    <h4 class="media-heading">
+                                        Time for Thai
+                                    </h4> Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis.
+                                </div>
+                            </div>
+                            <div class="media well" style="margin: 4px; padding: 4%">
+                             <a href="#" class="pull-left"><img src="../static/housetemplete/Unknown3.jpg" height="70" width="70" class="media-object" alt='' /></a>
+                                <div class="media-body">
+                                    <h4 class="media-heading">
+                                        HaiDiLao
+                                    </h4> It's a good place!
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="shopping_recommend_list" style="display: none">
+                            <div class="media well" style="margin: 4px; padding: 4%">
+                                <a href="#" class="pull-left"><img src="../static/housetemplete/images6.jpg" height="70" width="70" class="media-object" alt='' /></a>
+                                <div class="media-body">
+                                    <h4 class="media-heading">
+                                        IGA
+                                    </h4>
+                                    <div>
+                                        This is a wonderful place for holidays!
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="media well" style="margin: 4px; padding: 4%">
+                                <a href="#" class="pull-left"><img src="../static/housetemplete/images5.jpg" height="70" width="70" class="media-object" alt='' /></a>
+                                <div class="media-body">
+                                    <h4 class="media-heading">
+                                        Coles
+                                    </h4> Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque.
+                                </div>
+                            </div>
+                            <div class="media well" style="margin: 4px; padding: 4%">
+                             <a href="#" class="pull-left"><img src="../static/housetemplete/images4.jpg" height="70" width="70" class="media-object" alt='' /></a>
+                                <div class="media-body">
+                                    <h4 class="media-heading">
+                                        Westfeild
+                                    </h4> It's a good place!
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="gym_recommend_list" style="display: none">
+                            <div class="media well" style="margin: 4px; padding: 4%">
+                                <a href="#" class="pull-left"><img src="../static/housetemplete/images3.jpg" height="70" width="70" class="media-object" alt='' /></a>
+                                <div class="media-body">
+                                    <h4 class="media-heading">
+                                        Fitness First
+                                    </h4>
+                                    <div>
+                                        This is a wonderful place for holidays!
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="media well" style="margin: 4px; padding: 4%">
+                                <a href="#" class="pull-left"><img src="../static/housetemplete/images2.jpg" height="70" width="70" class="media-object" alt='' /></a>
+                                <div class="media-body">
+                                    <h4 class="media-heading">
+                                        Joiner Club
+                                    </h4> Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque.
+                                </div>
+                            </div>
+                            <div class="media well" style="margin: 4px; padding: 4%">
+                             <a href="#" class="pull-left"><img src="../static/housetemplete/images.jpg" height="70" width="70" class="media-object" alt='' /></a>
+                                <div class="media-body">
+                                    <h4 class="media-heading">
+                                        Westfeild
+                                    </h4> It's a good place!
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="search_recommend_list" style="display: none"></div>
+                    </div>
+                </div>
+				<div class="col-md-1 column">
+				</div>
+			</div>
+            <div class="row clearfix" style="margin-top: 20px">
+                <div class="col-md-1 column">
+                </div>
+                <div class="col-md-10 column">
+                    <div class="pull-right">
+                        <button type="button" class="btn btn-default">
+                            <a href="Successful.html">
+                                Booking Now
+                            </a>
+                        </button>
+                    </div>
+                </div>
+                <div class="col-md-1 column">
+                </div>
+            </div>
+			<h3>
+				Comment&ensp;<img src="../static/icon/comment.svg" style="height: 33px; margin-top: 0">
+			</h3>
+			<div class="media well">
+				 <a href="#" class="pull-left"><img src="../static/Unknown.png" height="50" width="50" class="media-object" alt='' /></a>
+				<div class="media-body">
+					<h4 class="media-heading">
+						Chengzhu Xie
+					</h4>
+					<div>
+						This is a wonderful place for holidays!
+					</div>
+
+					<div class="media well">
+						<a href="#" class="pull-left"><img src="../static/Unknown.png" height="50" width="50" class="media-object" alt='' /></a>
+						<div class="media-body">
+							<h4 class="media-heading">
+								Jianyu Yi (Master)
+							</h4>Thanks for your stay!
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="media well">
+				 <a href="#" class="pull-left"><img src="../static/Unknown.png" height="50" width="50" class="media-object" alt='' /></a>
+				<div class="media-body">
+					<h4 class="media-heading">
+						Hao An
+					</h4> Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis.
+					<div class="media well">
+						 <a href="#" class="pull-left"><img src="../static/Unknown.png" height="50" width="50" class="media-object" alt='' /></a>
+						<div class="media-body">
+							<h4 class="media-heading">
+								Jianyu Yi (Master)
+							</h4> Thank you!
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="media well">
+				 <a href="#" class="pull-left"><img src="../static/Unknown.png" height="50" width="50" class="media-object" alt='' /></a>
+				<div class="media-body">
+					<h4 class="media-heading">
+						Luyao Zhang
+					</h4> It's a good place!
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</body>
+</html>

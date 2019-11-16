@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../static/jquery-3.3.1/jquery-3.3.1.js"></script>
+    <script src="../static/js/bootstrap.js"></script>
+    <link rel="stylesheet" href="../static/css/bootstrap.css"/>
+</head>
+<body>
+<div class="container">
+	<div class="row clearfix">
+		<div class="col-md-12 column">
+			<nav class="navbar navbar-default" role="navigation">
+				<div class="navbar-header">
+					 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"> <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button> <a class="navbar-brand" href="#">Brand</a>
+				</div>
+
+				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+					<ul class="nav navbar-nav">
+						<li class="active">
+							 <a href="#">Link</a>
+						</li>
+						<li>
+							 <a href="#">Link</a>
+						</li>
+						<li class="dropdown">
+							 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown<strong class="caret"></strong></a>
+							<ul class="dropdown-menu">
+								<li>
+									 <a href="#">Action</a>
+								</li>
+								<li>
+									 <a href="#">Another action</a>
+								</li>
+								<li>
+									 <a href="#">Something else here</a>
+								</li>
+								<li class="divider">
+								</li>
+								<li>
+									 <a href="#">Separated link</a>
+								</li>
+								<li class="divider">
+								</li>
+								<li>
+									 <a href="#">One more separated link</a>
+								</li>
+							</ul>
+						</li>
+					</ul>
+					<form class="navbar-form navbar-left" role="search">
+						<div class="form-group">
+							<input type="text" class="form-control" />
+						</div> <button type="submit" class="btn btn-default">Submit</button>
+					</form>
+					<ul class="nav navbar-nav navbar-right">
+						<li>
+							 <a href="#">Link</a>
+						</li>
+						<li class="dropdown">
+							 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown<strong class="caret"></strong></a>
+							<ul class="dropdown-menu">
+								<li>
+									 <a href="#">Action</a>
+								</li>
+								<li>
+									 <a href="#">Another action</a>
+								</li>
+								<li>
+									 <a href="#">Something else here</a>
+								</li>
+								<li class="divider">
+								</li>
+								<li>
+									 <a href="#">Separated link</a>
+								</li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+
+			</nav>
+            <h3>
+				Let’s talk about your trip!
+			</h3>
+			<div class="row clearfix">
+				<div class="col-md-2 column">
+				</div>
+				<div class="col-md-8 column">
+					<form role="form">
+                        <div class="form-group">
+							 <label for="destination">What's your destination?</label><input type="text" class="form-control" id="destination" />
+						</div>
+						<div class="form-group">
+							 <label for="people_num">How many people?</label><input type="number" class="form-control" id="people_num" />
+						</div>
+						<div class="form-group">
+							 <label for="arrive_date">When will you arrive?</label><input type="date" class="form-control" id="arrive_date" />
+						</div>
+                        <div class="form-group">
+							 <label for="departure_date">When will you leave?</label><input type="date" class="form-control" id="departure_date" />
+						</div>
+						<div class="form-group">
+							 <label for="bed_num">How many bed do you need?</label><input type="number" class="form-control" id="bed_num" />
+						</div>
+                        <div class="form-group">
+							 <label for="bath_num">How many bathroom do you need?</label><label><input type="checkbox" />No share</label><input type="number" class="form-control" id="bath_num" />
+						</div>
+						<div class="checkbox">
+							 <label><input type="checkbox" />Allow Pets</label><br>
+                             <label><input type="checkbox" />Allow party</label><br>
+                             <label><input type="checkbox" />Washing Machine</label><br>
+                             <label><input type="checkbox" />Car Park</label>
+						</div>
+                        <div style="float: right">
+                            <button type="submit" class="btn btn-default">Go!</button>
+                        </div>
+
+					</form>
+				</div>
+				<div class="col-md-2 column">
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</body>
+</html>
